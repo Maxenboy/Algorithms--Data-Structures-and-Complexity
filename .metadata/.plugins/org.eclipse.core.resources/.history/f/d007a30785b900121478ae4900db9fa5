@@ -1,0 +1,9 @@
+public class Cell {
+	private int score;
+	private Cell prev;
+
+	public Cell() {
+		prev = null;
+		score = 0;
+	}
+}

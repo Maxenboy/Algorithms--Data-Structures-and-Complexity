@@ -1,0 +1,44 @@
+package graph;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Scanner;
+import java.util.regex.Pattern;
+
+public class Parser {
+	private HashMap<String, ArrayList<String>> graph;
+	private ArrayList<String> words;
+	private Scanner scan;
+	private String word,endswith;
+
+	public Parser(File in) throws Exception {
+		scan = new Scanner(in);
+		words=new ArrayList<String>();
+		while(scan.hasNext()){
+			words.add(scan.next());
+		}
+		for(int i =0;i<words.size();i++){
+			endswith=words.get(i).substring(1);
+				
+			
+			
+		}
+	}
+
+	public void recursive(String word) {
+		
+	}
+	
+	private ArrayList<String> neighBours(String word,String ending,ArrayList<String> list){
+		ArrayList<String> copy=list;
+		copy.remove(word);
+		char[] characters=ending.toCharArray();
+		for (String s:list){
+				if(Pattern.matches(, arg1)){
+			}
+		}
+	}
+
+	
+}

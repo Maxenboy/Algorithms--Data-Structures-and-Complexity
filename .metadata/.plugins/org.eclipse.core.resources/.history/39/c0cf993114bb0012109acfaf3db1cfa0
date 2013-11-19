@@ -1,0 +1,35 @@
+import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+public class Main {
+
+	public static void main(String[] args) throws Exception {
+		MatrixParser parser = new MatrixParser(new FileReader("BLOSUM62.txt"));
+		HashMap<String, HashMap<String, Integer>> map = parser.parse();
+		Parser p = new Parser(new FileReader("Toy_FASTAs.in"));
+		ArrayList<Animal> animals = p.parse();
+		System.out.println(animals.get(0).getName());
+		int cost1 = fill(new Cell[animals.get(0).getDna().length + 1][animals
+				.get(1).getDna().length + 1], animals.get(0).getDna(), animals
+				.get(1).getDna());
+		int cost2 = fill(new Cell[animals.get(1).getDna().length + 1][animals
+		                                              				.get(2).getDna().length + 1],animals.get(1).getDna(),animals
+		                                              				.get(2).getDna());
+		int cost3 = fill(Cell[][] three = new Cell[animals.get(0).getDna().length + 1][animals
+		                                                               				.get(2).getDna().length + 1],animals.get(0).getDna(),animals
+		                                                               				.get(2).getDna());
+	}
+
+	public static int fill(Cell[][] matrix, char[] animal1, char[] animal2) {
+		for (int i = 0; i < matrix.length; i++) {
+			matrix[i][0] = new Cell(map.get());
+		}
+		for (int i = 0; i < matrix.length; i++) {
+			for (int j = 0; j < matrix[i].length; j++) {
+
+			}
+		}
+	}
+
+}

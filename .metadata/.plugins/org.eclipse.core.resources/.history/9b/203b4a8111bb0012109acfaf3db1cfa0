@@ -1,0 +1,28 @@
+public class Cell {
+	private int score;
+	private Cell prev;
+
+	public Cell(int score) {
+		prev = null;
+		this.score = score;
+	}
+
+	public void setScoreAndPrev(int leftCell, int diagCell, int aboveCell) {
+		score = Math.max(Math.max(leftCell, diagCell), aboveCell);
+		if (score == left.score) {
+			prev = left;
+		} else if (score == diag.score) {
+			prev = diag;
+		} else {
+			prev = under;
+		}
+	}
+
+	public int getScore() {
+		return score;
+	}
+
+	public Cell getPrev() {
+		return prev;
+	}
+}

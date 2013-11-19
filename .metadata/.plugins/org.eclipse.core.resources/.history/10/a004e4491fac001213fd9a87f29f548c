@@ -1,0 +1,20 @@
+import java.util.Comparator;
+
+public class OurComparator implements Comparator<CityConnection> {
+	public OurComparator() {
+
+	}
+
+	@Override
+	public int compare(CityConnection n1, CityConnection n2) {
+		int result = n1.getDist() - n2.getDist();
+		if (result > 0) {
+			return 1;
+		} else if (result == 0) {
+			return 0;
+		} else {
+			return -1;
+		}
+	}
+
+}

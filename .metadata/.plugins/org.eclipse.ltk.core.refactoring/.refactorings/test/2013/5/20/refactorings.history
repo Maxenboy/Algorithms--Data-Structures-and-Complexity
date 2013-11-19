@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move 3 elements to &apos;SequenceAlignment/src&apos;&#x0D;&#x0A;- Original project: &apos;test&apos;&#x0D;&#x0A;- Destination element: &apos;SequenceAlignment/src&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     HbB_FASTAs.out&#x0D;&#x0A;     Toy_FASTAs.in&#x0D;&#x0A;     Toy_FASTAs.out&#x0D;&#x0A;- Update references to refactored element" description="Move files" destination="=SequenceAlignment/src" element1="HbB_FASTAs.out" element2="Toy_FASTAs.in" element3="Toy_FASTAs.out" files="3" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1368532153696" units="0" version="1.0"/>
+</session>

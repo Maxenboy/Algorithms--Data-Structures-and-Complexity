@@ -1,0 +1,15 @@
+Created with UCDetector 1.10.0	2013-03-24 18:34:52	http://www.ucdetector.org/	
+Location	Description	Java	Marker	Author
+sm.Man.<init>(Man.java:4)	Change visibility of Class "Man" to default - May cause compile errors!	Man	org.ucdetector.analyzeMarkerVisibilityDefault	
+sm.Man.Man(Man.java:10)	Change visibility of Constructor "Man.Man(String)" to default	Man.Man(String)	org.ucdetector.analyzeMarkerVisibilityDefault	
+sm.Man.addWomen(Man.java:20)	Change visibility of Method "Man.addWomen(Woman)" to default	Man.addWomen(Woman)	org.ucdetector.analyzeMarkerVisibilityDefault	
+sm.Man.findAvailableWoman(Man.java:39)	Change visibility of Method "Man.findAvailableWoman()" to default	Man.findAvailableWoman()	org.ucdetector.analyzeMarkerVisibilityDefault	
+sm.Man.setSingle(Man.java:54)	Change visibility of Method "Man.setSingle()" to default	Man.setSingle()	org.ucdetector.analyzeMarkerVisibilityDefault	
+sm.Woman.<init>(Woman.java:4)	Change visibility of Class "Woman" to default - May cause compile errors!	Woman	org.ucdetector.analyzeMarkerVisibilityDefault	
+sm.Woman.Woman(Woman.java:11)	Change visibility of Constructor "Woman.Woman(String)" to default	Woman.Woman(String)	org.ucdetector.analyzeMarkerVisibilityDefault	
+sm.Woman.addMan(Woman.java:22)	Change visibility of Method "Woman.addMan(Man)" to default	Woman.addMan(Man)	org.ucdetector.analyzeMarkerVisibilityDefault	
+sm.Woman.prefers(Woman.java:39)	Change visibility of Method "Woman.prefers(Man)" to default	Woman.prefers(Man)	org.ucdetector.analyzeMarkerVisibilityDefault	
+sm.Parser.<init>(Parser.java:7)	Change visibility of Class "Parser" to default - May cause compile errors!	Parser	org.ucdetector.analyzeMarkerVisibilityDefault	
+sm.Parser.Parser(Parser.java:14)	Change visibility of Constructor "Parser.Parser(Reader)" to default	Parser.Parser(Reader)	org.ucdetector.analyzeMarkerVisibilityDefault	
+sm.Parser.parse(Parser.java:21)	Change visibility of Method "Parser.parse()" to default	Parser.parse()	org.ucdetector.analyzeMarkerVisibilityDefault	
+sm.GSAlgorithm.<init>(GSAlgorithm.java:7)	Class "GSAlgorithm" has 0 references	GSAlgorithm	org.ucdetector.analyzeMarkerReference	

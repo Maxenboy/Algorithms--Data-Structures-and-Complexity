@@ -1,0 +1,23 @@
+import java.io.BufferedReader;
+import java.io.Reader;
+import java.util.ArrayList;
+
+
+public class ThoresParser extends BufferedReader {
+private ArrayList<Double> list;
+	public ThoresParser(Reader in) {
+		super(in);
+	list=new ArrayList<Double>();
+	}
+	public ArrayList<Double> parse() throws Exception{
+		String line = readLine().trim();
+		while(line!=null){
+			String[] temp =line.split(" ");
+			list.add(Double.parseDouble(temp[2]));
+			line = readLine().trim();
+		}
+		return list;
+	}
+
+
+}

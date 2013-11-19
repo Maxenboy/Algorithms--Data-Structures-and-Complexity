@@ -1,0 +1,18 @@
+public class Cell {
+	private int score;
+	private Cell prev;
+
+	public Cell(int score) {
+		prev = null;
+		this.score = score;
+	}
+
+	public void setScore(Cell left, Cell diag, Cell under) {
+		score = Math.max(Math.max(left.score, diag.score), under.score);
+	}
+
+	public void setPrev(Cell p) {
+		prev = p;
+	}
+
+}

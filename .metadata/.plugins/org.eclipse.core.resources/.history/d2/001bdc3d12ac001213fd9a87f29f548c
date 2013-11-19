@@ -1,0 +1,13 @@
+public class CityConnection {
+	String city;
+	int dist;
+
+	public CityConnection(String city, int dist) {
+		this.city = city;
+		this.dist = dist;
+	}
+
+	public int getDist() {
+		return dist;
+	}
+}

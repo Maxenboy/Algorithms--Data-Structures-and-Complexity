@@ -1,0 +1,94 @@
+import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+public class Main {
+
+	public static void main(String[] args) throws Exception {
+		MatrixParser parser = new MatrixParser(new FileReader("BLOSUM62.txt"));
+		HashMap<String, HashMap<String, Integer>> map = parser.parse();
+		Parser p = new Parser(new FileReader("Toy_FASTAs.in"));
+		ArrayList<Animal> animals = p.parse();
+		ArrayList<String> cost1 = fill(
+				new Cell[animals.get(0).getDna().length + 1][animals.get(2)
+						.getDna().length + 1], animals.get(0), animals.get(2),
+				map);
+		ArrayList<String> cost2 = fill(
+				new Cell[animals.get(0).getDna().length + 1][animals.get(1)
+						.getDna().length + 1], animals.get(0), animals.get(1),
+				map);
+		ArrayList<String> cost3 = fill(
+				new Cell[animals.get(2).getDna().length + 1][animals.get(1)
+						.getDna().length + 1], animals.get(2), animals.get(1),
+				map);
+		
+	}
+
+	public static ArrayList<String> fill(Cell[][] matrix, Animal animal1,
+			Animal animal2, HashMap<String, HashMap<String, Integer>> map) {
+		matrix[0][0] = new Cell(0);
+		for (int i = 1; i < animal1.getDna().length + 1; i++) {
+			matrix[i][0] = new Cell(map.get(
+					Character.toString(animal1.getDna()[i - 1])).get("*")
+					* i);
+		}
+		for (int i = 1; i < animal2.getDna().length + 1; i++) {
+			matrix[0][i] = new Cell(map.get(
+					Character.toString(animal2.getDna()[i - 1])).get("*")
+					* i);
+		}
+		for (int i = 1; i < matrix.length; i++) {
+			for (int j = 1; j < matrix[i].length; j++) {
+				matrix[i][j] = new Cell(0)
+						.setScoreAndPrev(
+								matrix[i - 1][j],
+								map.get(Character.toString(animal2.getDna()[j - 1]))
+										.get("*"),
+								matrix[i - 1][j - 1],
+								map.get(Character.toString(animal2.getDna()[j - 1]))
+										.get(Character.toString(animal1
+												.getDna()[i - 1])),
+								matrix[i][j - 1],
+								map.get(Character.toString(animal2.getDna()[j - 1]))
+										.get("*"), j, i);
+			}
+		}
+		ArrayList<String> resultinfo = new ArrayList<String>();
+		resultinfo.add(animal1.getName());
+		resultinfo.add(animal2.getName());
+		resultinfo.add(Integer.toString(matrix[animal1.getDna().length][animal2
+				.getDna().length].getScore()));
+		Cell result = matrix[animal1.getDna().length][animal2.getDna().length];
+		StringBuilder sb1 = new StringBuilder().append(animal2.getDna()[result
+				.getRow() - 1]);
+		StringBuilder sb2 = new StringBuilder().append(animal1.getDna()[result
+				.getCol() - 1]);
+		int row = result.getRow();
+		int col = result.getCol();
+		while (result.getPrev().getPrev() != null) {
+			result = result.getPrev();
+			if (result.getRow() != row && result.getCol() != col) {
+				sb1.append(animal2.getDna()[result.getRow() - 1]);
+				sb2.append(animal1.getDna()[result.getCol() - 1]);
+			} else if (result.getRow() == row) {
+				sb1.append("-");
+				sb2.append(animal1.getDna()[result.getCol() - 1]);
+			} else {
+				sb1.append(animal2.getDna()[result.getRow() - 1]);
+				sb2.append("-");
+			}
+			row = result.getRow();
+			col = result.getCol();
+		}
+		resultinfo.add(sb2.reverse().toString());
+		resultinfo.add(sb1.reverse().toString());
+		return resultinfo;
+	}
+	public void print(ArrayList<String> result){
+		System.out.println(result.get(0)+"--"+result.get(1)+": "+result.get(2));
+		System.out.println(result.get(3));
+		System.out.println(result.get(4));
+		}
+	}
+
+}

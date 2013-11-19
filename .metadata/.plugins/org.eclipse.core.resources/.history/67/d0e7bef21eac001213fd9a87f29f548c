@@ -1,0 +1,31 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.Reader;
+import java.util.ArrayList;
+
+public class Parser extends BufferedReader {
+	private ArrayList<CityNode> list;
+
+	public Parser(Reader in) throws Exception {
+		super(in);
+		list = new ArrayList<CityNode>();
+
+	}
+
+	public ArrayList<CityNode> parse() throws IOException {
+		for (int i = 0; i < 128; i++) {
+			list.add(new CityNode(readLine()));
+		}
+		String line=readLine();
+		while(line!=null){
+			String city=line.split("--")[0];
+			String [] temp=line.split("--")[1].split(" \\[");
+			String connection=temp[0];
+			int dist=Integer.valueOf(temp[1].substring(0,temp[1].length()-1));
+			list.get(list.indexOf(city)).add(new CityConnection(connection, dist));
+			list.get(list.indexOf(connection)).add(new CityConnection(city, dist));
+			line=readLine();
+		}
+		return list;
+	}
+}

@@ -1,0 +1,21 @@
+package graph;
+
+import java.util.ArrayList;
+
+public class Node {
+private ArrayList<Node> list;
+private String word;
+	public Node(String word){
+		list=new ArrayList<Node>();
+		this.word=word;
+	}
+	
+	public void add(String word){
+		list.add(new Node(word));
+	}
+	
+	public String getWord(){
+		return word;
+	}
+	
+}

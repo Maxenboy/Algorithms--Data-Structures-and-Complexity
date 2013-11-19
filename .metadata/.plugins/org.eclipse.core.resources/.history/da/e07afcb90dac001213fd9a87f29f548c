@@ -1,0 +1,22 @@
+
+
+public class CityConnection implements Comparable<CityConnection> {
+	String city,city2;
+	int dist;
+	
+	
+	public CityConnection(String city, String city2, int dist){
+		this.city=city;
+		this.city2=city2;
+		this.dist=dist;
+	}
+	
+	
+	@Override
+	public int compareTo(CityConnection n2) {
+		return Integer.compare(dist, n2.dist);
+	}
+	
+	
+
+}

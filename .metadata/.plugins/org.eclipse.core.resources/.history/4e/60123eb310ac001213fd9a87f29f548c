@@ -1,0 +1,14 @@
+import java.util.PriorityQueue;
+
+public class CityNode {
+	String city;
+	
+	PriorityQueue<CityNode> connections;
+
+	public CityNode(String city, int dist) {
+		this.city = city;
+		connections=new PriorityQueue<CityNode>(128, new OurComparator());
+	}
+
+	
+}

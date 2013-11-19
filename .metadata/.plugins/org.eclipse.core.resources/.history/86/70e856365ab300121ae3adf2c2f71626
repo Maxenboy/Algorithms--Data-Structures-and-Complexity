@@ -1,0 +1,24 @@
+import java.io.File;
+import java.io.FileReader;
+import java.util.ArrayList;
+
+public class Main {
+
+	public static void main(String[] args) throws Exception {
+		File d = new File("input");
+		File[] listofFiles=d.listFiles();
+		for (File f : listofFiles) {
+			Parser p = new Parser(new FileReader(f));
+			ArrayList<OurPoint> list = p.parse();
+			double min = Double.MAX_VALUE;
+			for (OurPoint t : list) {
+				for (int i = 0; i < list.size(); i++) {
+					if (t.distance(list.get(i)) < min && list.get(i) != t) {
+						min = t.distance(list.get(i));
+					}
+				}
+			}
+			System.out.println(min);
+		}
+	}
+}

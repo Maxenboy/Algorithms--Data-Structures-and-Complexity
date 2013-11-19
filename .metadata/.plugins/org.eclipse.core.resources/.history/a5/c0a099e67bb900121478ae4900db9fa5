@@ -1,0 +1,9 @@
+import java.io.BufferedReader;
+import java.util.ArrayList;
+
+public class Parser extends BufferedReader {
+
+	public ArrayList<Animal> parse() {
+
+	}
+}

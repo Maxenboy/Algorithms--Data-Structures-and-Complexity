@@ -1,0 +1,10 @@
+package graph;
+
+import java.io.Reader;
+
+public class Parser {
+
+	public Parser(Reader in) throws Exception{
+		
+	}
+}

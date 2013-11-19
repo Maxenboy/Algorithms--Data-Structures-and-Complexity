@@ -1,0 +1,18 @@
+public class Animal {
+	private String name;
+	private char[] dna;
+
+	public Animal(String name, char[] dna) {
+		this.name = name;
+		this.dna = dna;
+
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public char[] getDna() {
+		return dna;
+	}
+}

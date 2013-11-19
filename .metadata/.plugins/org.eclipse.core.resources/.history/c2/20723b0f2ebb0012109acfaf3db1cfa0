@@ -1,0 +1,51 @@
+import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+public class Main {
+
+	public static void main(String[] args) throws Exception {
+		MatrixParser parser = new MatrixParser(new FileReader("BLOSUM62.txt"));
+		HashMap<String, HashMap<String, Integer>> map = parser.parse();
+		Parser p = new Parser(new FileReader("Toy_FASTAs.in"));
+		ArrayList<Animal> animals = p.parse();
+		int cost1 = fill(new Cell[animals.get(0).getDna().length + 1][animals
+				.get(1).getDna().length + 1], animals.get(2).getDna(), animals
+				.get(1).getDna(), map);
+		int cost2 = fill(new Cell[animals.get(0).getDna().length + 1][animals
+				.get(1).getDna().length + 1], animals.get(1).getDna(), animals
+				.get(2).getDna(), map);
+		int cost3 = fill(new Cell[animals.get(2).getDna().length + 1][animals
+				.get(1).getDna().length + 1], animals.get(0).getDna(), animals
+				.get(2).getDna(), map);
+		System.out.println(cost1 + "\t" + cost2 + "\t" + cost3);
+	}
+
+	public static int fill(Cell[][] matrix, char[] animal1, char[] animal2,
+			HashMap<String, HashMap<String, Integer>> map) {
+		matrix[0][0] = new Cell(0);
+		for (int i = 1; i < animal1.length + 1; i++) {
+			matrix[i][0] = new Cell(map.get(Character.toString(animal1[i - 1]))
+					.get("*") * i);
+		}
+		for (int i = 1; i < animal2.length + 1; i++) {
+			matrix[0][i] = new Cell(map.get(Character.toString(animal2[i - 1]))
+					.get("*") * i);
+		}
+		for (int i = 1; i < matrix.length; i++) {
+			for (int j = 1; j < matrix[i].length; j++) {
+				matrix[i][j] = new Cell(0).setScoreAndPrev(
+						matrix[i - 1][j],
+						map.get(Character.toString(animal2[j - 1])).get("*"),
+						matrix[i - 1][j - 1],
+						map.get(Character.toString(animal2[j - 1])).get(
+								Character.toString(animal1[i - 1])),
+						matrix[i][j - 1],
+						map.get(Character.toString(animal2[j - 1])).get("*"));
+			}
+		}
+		System.out.println(animal1.length);
+		return matrix[animal1.length][animal2.length].getScore();
+	}
+
+}

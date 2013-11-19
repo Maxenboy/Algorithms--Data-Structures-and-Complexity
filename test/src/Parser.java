@@ -1,0 +1,21 @@
+import java.io.BufferedReader;
+import java.io.Reader;
+import java.util.ArrayList;
+
+public class Parser extends BufferedReader {
+	private ArrayList<Animal> animals;
+
+	public Parser(Reader in) throws Exception {
+		super(in);
+		animals = new ArrayList<Animal>();
+	}
+
+	public ArrayList<Animal> parse() throws Exception {
+		String line = readLine();
+		while (line != null) {
+			animals.add(new Animal(line.substring(1), readLine()));
+			line =readLine();
+		}
+		return animals;
+	}
+}

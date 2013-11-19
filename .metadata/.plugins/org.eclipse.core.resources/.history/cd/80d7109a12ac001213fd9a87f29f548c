@@ -1,0 +1,13 @@
+import java.io.BufferedReader;
+import java.io.Reader;
+import java.util.ArrayList;
+
+public class Parser extends BufferedReader {
+	private ArrayList<CityNode> list;
+
+	public Parser(Reader in) throws Exception {
+		super(in);
+		list = new ArrayList<CityNode>();
+
+	}
+}

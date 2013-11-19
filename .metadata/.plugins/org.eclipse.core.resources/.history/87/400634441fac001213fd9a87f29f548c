@@ -1,0 +1,25 @@
+import java.util.PriorityQueue;
+
+public class CityNode {
+	String city;
+
+	PriorityQueue<CityConnection> connections;
+
+	public CityNode(String city) {
+		this.city = city;
+		connections = new PriorityQueue<CityConnection>(128,
+				new OurComparator());
+	}
+
+	public void add(CityConnection connection) {
+		connections.add(connection);
+	}
+
+	public CityNode poll() {
+		return new CityNode(connections.poll().getName());
+	}
+
+	public String getName() {
+		return city;
+	}
+}

@@ -1,0 +1,14 @@
+import java.util.Comparator;
+
+
+public class OurComparator implements Comparator<CityNode> {
+public OurComparator(){
+	
+}
+	@Override
+	public int compare(CityNode n1, CityNode n2) {
+		
+		return n1.getDist()-n2.getDist()>0?n1.getDist():n2.getDist();
+	}
+
+}

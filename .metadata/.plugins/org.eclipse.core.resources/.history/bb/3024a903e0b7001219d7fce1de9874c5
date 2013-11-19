@@ -1,0 +1,67 @@
+import java.io.File;
+import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class Test {
+	public static void main(String[] args) throws Exception {
+		long start = System.currentTimeMillis();
+		File d = new File("input");
+		File[] listofFiles = d.listFiles();
+		ThoresParser tp = new ThoresParser(new FileReader("closest-pair.out"));
+		ArrayList<Double> thore = tp.parse();
+		double sumdiff=0;
+		int i=0;
+		for (File f : listofFiles) {
+			Parser parser = new Parser(new FileReader(f));
+			ArrayList<OurPoint> list = parser.parse();
+			double distance = rec(list, Double.MAX_VALUE);
+			sumdiff+=Math.abs(distance-thore.get(i));
+			i++;
+			//System.out.println(distance);
+		}
+		System.out.println(sumdiff);
+		System.out.println(System.currentTimeMillis()-start);
+		
+	}
+
+	private static double rec(List<OurPoint> list, Double min) {
+		if (list.size() <= 1) {
+			return min;
+		} else if (list.size() <= 3) {
+			for (OurPoint t : list) {
+				for (int i = 0; i < list.size(); i++) {
+					if (t.distance(list.get(i)) < min && list.get(i) != t) {
+						min = t.distance(list.get(i));
+						return min;
+					}
+				}
+			}
+		}
+		int mid = list.size() / 2;
+		OurPoint midpoint = list.get(mid);
+		double left = rec(list.subList(0, mid), min);
+		double right = rec(list.subList(mid + 1, list.size()), min);
+		double d = Math.min(left, right);
+		if (d != 0) {
+			ArrayList<OurPoint> temp = new ArrayList<OurPoint>();
+			for (OurPoint p : list) {
+				if (Math.abs(p.getX() - midpoint.getX()) < d) {
+					temp.add(p);
+				}
+			}
+			Collections.sort(temp, new OurPointYSort());
+			for (OurPoint p : temp) {
+				for (int i = 0; i < temp.size(); i++) {
+					if (p.distance(temp.get(i)) <= d && temp.get(i) != p) {
+						d = p.distance(temp.get(i));
+					}
+				}
+			}
+		}
+
+		return d;
+
+	}
+}

@@ -1,0 +1,10 @@
+import java.io.BufferedReader;
+
+
+public class Reader extends BufferedReader {
+
+	public Reader(java.io.Reader arg0) {
+		super(arg0);
+	}
+
+}

@@ -1,0 +1,23 @@
+import java.util.PriorityQueue;
+
+
+public class Citynode implements Comparable<CityConnection> {
+	String city;
+	int dist;
+	
+	
+	public Citynode(String city, int dist){
+		this.city=city;
+		this.dist=dist;
+		connections = new PriorityQueue<CityConnection>();
+	}
+	
+	
+	@Override
+	public int compareTo(CityConnection n2) {
+		return Integer.compare(dist, n2.dist);
+	}
+	
+	
+
+}

@@ -1,0 +1,14 @@
+package graph;
+
+import java.util.regex.Pattern;
+
+public class test {
+public static void main(String[]args){
+	String s = "their";
+	String t = "other".substring(1);
+	char[] c = t.toCharArray();
+	if(Pattern.matches(c[0], s)){
+		System.out.println("sucee");
+	}
+}
+}

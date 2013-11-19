@@ -1,0 +1,48 @@
+public class Cell {
+	private int score, row, col;
+	private Cell prev;
+
+	public Cell(int score, int row, int col) {
+		prev = null;
+		this.score = score;
+		this.row = row;
+		this.col = col;
+	}
+
+	public Cell(int score) {
+		prev = null;
+		this.score = score;
+	}
+
+	public Cell setScoreAndPrev(Cell left, int a, Cell diag, int b, Cell above,
+			int c) {
+		Cell cell = new Cell(0);
+		cell.score = Math.max(Math.max(left.score + a, diag.score + b), above.score
+				+ c);
+		if (cell.score == left.score + a) {
+		cell.prev = left;
+		} else if (cell.score == diag.score + b) {
+		cell.prev = diag;
+		} else {
+		cell.prev = above;
+		}
+		return cell;
+	}
+
+	public int getScore() {
+		return score;
+	}
+
+	public Cell getPrev() {
+		return prev;
+	}
+
+	public int getCol() {
+		return col;
+	}
+
+	public int getRow() {
+		return row;
+	}
+
+}
